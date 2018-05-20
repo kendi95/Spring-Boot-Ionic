@@ -2,11 +2,14 @@ package com.kohatsu.cursomc.servicies;
 
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kohatsu.cursomc.domain.Categoria;
 import com.kohatsu.cursomc.repositories.CategoriaRepository;
+import com.kohatsu.cursomc.servicies.exceptions.ObjectNotFoundException;
+
 
 @Service
 public class CategoriaService {
@@ -18,7 +21,7 @@ public class CategoriaService {
 		
 		Optional<Categoria> obj = repo.findById(id);
 		
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado: Id: "+id+", Tipo: "+Categoria.class.getName()));
 		
 	}
 	
