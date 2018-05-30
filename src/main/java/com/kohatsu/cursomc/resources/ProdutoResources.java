@@ -18,7 +18,7 @@ import com.kohatsu.cursomc.resources.utils.URL;
 import com.kohatsu.cursomc.servicies.ProdutoService;
 
 @RestController
-@RequestMapping(value="produtos")
+@RequestMapping(value="/produtos")
 public class ProdutoResources {
 
 	@Autowired

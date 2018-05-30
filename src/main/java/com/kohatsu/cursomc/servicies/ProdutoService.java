@@ -25,6 +25,8 @@ public class ProdutoService {
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 	
+	
+	
 	public Produto find(Integer id) {
 		
 		Optional<Produto> obj = repo.findById(id);
@@ -39,7 +41,7 @@ public class ProdutoService {
 		
 		List<Categoria> categorias = categoriaRepository.findAllById(ids);
 		
-		return 	repo.findDistinctByNomeContainingAndCategoriasIn(nome, categorias, pageRequest);	
+		return 	repo.search(nome, categorias, pageRequest);	
 		
 	}
 	
