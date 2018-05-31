@@ -15,6 +15,7 @@ import com.kohatsu.cursomc.domain.enums.EstadoPagamento;
 import com.kohatsu.cursomc.repositories.ItemPedidoRepository;
 import com.kohatsu.cursomc.repositories.PagamentoRepository;
 import com.kohatsu.cursomc.repositories.PedidoRepository;
+import com.kohatsu.cursomc.servicies.email.EmailService;
 import com.kohatsu.cursomc.servicies.exceptions.ObjectNotFoundException;
 
 
@@ -29,6 +30,8 @@ public class PedidoService {
 	private ProdutoService produtoService;
 	@Autowired
 	private ClienteService clienteService;
+	@Autowired
+	private EmailService emailService;
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
 	@Autowired
@@ -73,8 +76,7 @@ public class PedidoService {
 		}
 
 		itemPedidoRepository.saveAll(obj.getItens());
-		
-		System.out.println(obj);
+		emailService.sendOrderConfirmationEmail(obj);
 		
 		return obj;
 
