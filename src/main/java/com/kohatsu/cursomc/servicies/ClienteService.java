@@ -16,11 +16,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kohatsu.cursomc.domain.Cidade;
 import com.kohatsu.cursomc.domain.Cliente;
 import com.kohatsu.cursomc.domain.Endereco;
+import com.kohatsu.cursomc.domain.enums.Perfil;
 import com.kohatsu.cursomc.domain.enums.TipoCliente;
 import com.kohatsu.cursomc.dto.ClienteDTO;
 import com.kohatsu.cursomc.dto.ClienteNewDTO;
 import com.kohatsu.cursomc.repositories.ClienteRepository;
 import com.kohatsu.cursomc.repositories.EnderecoRepository;
+import com.kohatsu.cursomc.security.UserSS;
+import com.kohatsu.cursomc.servicies.exceptions.AuthorizationException;
 import com.kohatsu.cursomc.servicies.exceptions.ObjectNotFoundException;
 
 
@@ -38,6 +41,14 @@ public class ClienteService {
 	
 	
 	public Cliente find(Integer id) {
+		
+		UserSS user = UserService.authenticated();
+		
+		if(user == null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())) {
+			
+			throw new AuthorizationException("Acesso negado.");
+			
+		}
 		
 		Optional<Cliente> obj = repo.findById(id);
 		
