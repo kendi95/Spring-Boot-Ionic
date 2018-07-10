@@ -1,11 +1,12 @@
 package com.kohatsu.cursomc.servicies;
 
+import java.awt.image.BufferedImage;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -40,6 +41,12 @@ public class ClienteService {
 	private EnderecoRepository enderecoRepository;
 	@Autowired
 	private S3Service s3Service;
+	@Autowired
+	private ImageService imageService;
+	
+	
+	@Value("${img.prefix.client.profile}")
+	private String prefix;
 	
 	
 	public Cliente find(Integer id) {
@@ -158,16 +165,14 @@ public class ClienteService {
 			
 		}else {
 			
-			URI uri = s3Service.uploadFile(multipartFile);
 			
-			Optional<Cliente> obj = repo.findById(user.getId());
-			obj.get().setImageURL(uri.toString());
+			BufferedImage ipgImage = imageService.getJpgImageFromFile(multipartFile);
 			
-			repo.save(obj.get());
+			String fileName = prefix+user.getId()+".jpg";
+			
+			return s3Service.uploadFile(imageService.getInputStream(ipgImage, "jpg"), fileName, "image");
 			
 		}
-		
-		return s3Service.uploadFile(multipartFile);
 		
 	}
 	
