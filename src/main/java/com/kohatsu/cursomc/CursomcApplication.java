@@ -1,8 +1,11 @@
 package com.kohatsu.cursomc;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.kohatsu.cursomc.servicies.S3Service;
 
 @SpringBootApplication
 public class CursomcApplication implements CommandLineRunner{
@@ -25,6 +28,9 @@ public class CursomcApplication implements CommandLineRunner{
 	private PagamentoRepository pagamentoRepository;
 	@Autowired
 	private ItemPedidoRepository itemPedidoRepository;*/
+	
+	@Autowired
+	private S3Service s3Service;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
@@ -131,6 +137,8 @@ public class CursomcApplication implements CommandLineRunner{
 		p3.getItens().addAll(Arrays.asList(ip2));
 		
 		itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));*/
+		
+		s3Service.uploadFile("C:\\Users\\Kendi\\Pictures\\icon0.png");
 		
 	}
 }

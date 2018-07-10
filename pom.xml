@@ -26,58 +26,90 @@
 
 	<dependencies>
 	
+		<!-- Dependencia do Spring Boot para Spring Web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- Dependencia do Spring Boot para teste -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 		
+		<!-- Dependencia do Spring Boot para Spring Data -->
 		<dependency>   
 			<groupId>org.springframework.boot</groupId>   
 			<artifactId>spring-boot-starter-data-jpa</artifactId>  
 		</dependency> 
  
+		<!-- Dependencia do H2 para banco de dados em memória --> 
  		<dependency>   
  			<groupId>com.h2database</groupId>   
  			<artifactId>h2</artifactId>   
  			<scope>runtime</scope>  
  		</dependency>    
  		
+ 		<!-- Dependencia do Spring Boot de ferramentas de desenvolvimento -->
  		<dependency>   
  			<groupId>org.springframework.boot</groupId>   
  			<artifactId>spring-boot-devtools</artifactId>  
  		</dependency>
  		
+ 		<!-- Dependencia do MySQL -->
  		<dependency>   
  			<groupId>mysql</groupId>   
  			<artifactId>mysql-connector-java</artifactId>  
  		</dependency>
  		
+ 		<!-- Dependencia do Spring Boot para email -->
  		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 		
+		<!-- Dependencia do Thymeleaf -->
 		<dependency>   
  			<groupId>org.springframework.boot</groupId>   
  			<artifactId>spring-boot-starter-thymeleaf</artifactId>  
  		</dependency>
  		
+ 		<!-- Dependencia do Spring Boot para Security -->
  		<dependency>   
  			<groupId>org.springframework.boot</groupId>   
  			<artifactId>spring-boot-starter-security</artifactId>  
  		</dependency>
  		
+ 		<!-- Dependencia do Json para Token -->
  		<dependency>   
  			<groupId>io.jsonwebtoken</groupId>   
  			<artifactId>jjwt</artifactId>
  			<version>0.7.0</version>  
  		</dependency>
+ 		
+ 		<!-- Dependencia do Hibernate -->
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-core</artifactId>
+		    <version>5.3.1.Final</version>
+		</dependency>
+		
+		<!-- Dependencia do Amazon AWS -->
+		<dependency>
+		    <groupId>com.amazonaws</groupId>
+		    <artifactId>aws-java-sdk</artifactId>
+		    <version>1.11.363</version>
+		</dependency>
+		
+		<!-- Dependencia do Apache -->
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.6</version>
+		</dependency>
+		 		
  		
 	</dependencies>
 
