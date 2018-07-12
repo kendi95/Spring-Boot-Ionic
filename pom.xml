@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -15,7 +16,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.2.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
@@ -25,7 +26,7 @@
 	</properties>
 
 	<dependencies>
-	
+
 		<!-- Dependencia do Spring Boot para Spring Web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -38,79 +39,86 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<!-- Dependencia do Spring Boot para Spring Data -->
-		<dependency>   
-			<groupId>org.springframework.boot</groupId>   
-			<artifactId>spring-boot-starter-data-jpa</artifactId>  
-		</dependency> 
- 
-		<!-- Dependencia do H2 para banco de dados em memória --> 
- 		<dependency>   
- 			<groupId>com.h2database</groupId>   
- 			<artifactId>h2</artifactId>   
- 			<scope>runtime</scope>  
- 		</dependency>    
- 		
- 		<!-- Dependencia do Spring Boot de ferramentas de desenvolvimento -->
- 		<dependency>   
- 			<groupId>org.springframework.boot</groupId>   
- 			<artifactId>spring-boot-devtools</artifactId>  
- 		</dependency>
- 		
- 		<!-- Dependencia do MySQL -->
- 		<dependency>   
- 			<groupId>mysql</groupId>   
- 			<artifactId>mysql-connector-java</artifactId>  
- 		</dependency>
- 		
- 		<!-- Dependencia do Spring Boot para email -->
- 		<dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<!-- Dependencia do H2 para banco de dados em memória -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- Dependencia do Spring Boot de ferramentas de desenvolvimento -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+
+		<!-- Dependencia do MySQL -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
+		<!-- Dependencia do Spring Boot para email -->
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
-		
+
 		<!-- Dependencia do Thymeleaf -->
-		<dependency>   
- 			<groupId>org.springframework.boot</groupId>   
- 			<artifactId>spring-boot-starter-thymeleaf</artifactId>  
- 		</dependency>
- 		
- 		<!-- Dependencia do Spring Boot para Security -->
- 		<dependency>   
- 			<groupId>org.springframework.boot</groupId>   
- 			<artifactId>spring-boot-starter-security</artifactId>  
- 		</dependency>
- 		
- 		<!-- Dependencia do Json para Token -->
- 		<dependency>   
- 			<groupId>io.jsonwebtoken</groupId>   
- 			<artifactId>jjwt</artifactId>
- 			<version>0.7.0</version>  
- 		</dependency>
- 		
- 		<!-- Dependencia do Hibernate -->
 		<dependency>
-		    <groupId>org.hibernate</groupId>
-		    <artifactId>hibernate-core</artifactId>
-		    <version>5.3.1.Final</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-		
+
+		<!-- Dependencia do Spring Boot para Security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<!-- Dependencia do Json para Token -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.7.0</version>
+		</dependency>
+
+		<!-- Dependencia do Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.3.1.Final</version>
+		</dependency>
+
 		<!-- Dependencia do Amazon AWS -->
 		<dependency>
-		    <groupId>com.amazonaws</groupId>
-		    <artifactId>aws-java-sdk</artifactId>
-		    <version>1.11.363</version>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk</artifactId>
+			<version>1.11.363</version>
 		</dependency>
-		
+
 		<!-- Dependencia do Apache -->
 		<dependency>
-		    <groupId>commons-io</groupId>
-		    <artifactId>commons-io</artifactId>
-		    <version>2.6</version>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.6</version>
 		</dependency>
-		 		
- 		
+
+		<!--Dependência de manipulação de imagem-->
+		<dependency>
+			<groupId>org.imgscalr</groupId>
+			<artifactId>imgscalr-lib</artifactId>
+			<version>4.2</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
