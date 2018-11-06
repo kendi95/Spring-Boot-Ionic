@@ -24,6 +24,10 @@ import com.kohatsu.cursomc.dto.ClienteDTO;
 import com.kohatsu.cursomc.dto.ClienteNewDTO;
 import com.kohatsu.cursomc.servicies.ClienteService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 @RestController
 @RequestMapping(value="/clientes")
 public class ClienteResources {
@@ -31,6 +35,7 @@ public class ClienteResources {
 	@Autowired
 	private ClienteService service;
 	
+	@ApiOperation(value="Retorna cliente por id") 
 	@RequestMapping(value="/{id}",method=RequestMethod.GET)
 	public ResponseEntity<Cliente> find(@PathVariable Integer id) {
 		
@@ -40,6 +45,7 @@ public class ClienteResources {
 		
 	}
 	
+	@ApiOperation(value="Retorna cliente por email") 
 	@RequestMapping(value="/email",method=RequestMethod.GET)
 	public ResponseEntity<Cliente> findByEmail(@RequestParam(value="value") String email) {
 		
@@ -49,6 +55,7 @@ public class ClienteResources {
 		
 	}
 	
+	@ApiOperation(value="Insere cliente") 
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody ClienteNewDTO objDto){
 		
@@ -62,6 +69,7 @@ public class ClienteResources {
 		
 	}
 	
+	@ApiOperation(value="Atualiza cliente") 
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody ClienteDTO objDto, @PathVariable Integer id){
 		
@@ -75,6 +83,11 @@ public class ClienteResources {
 		
 	}
 	
+	@ApiOperation(value="Remove cliente")
+	@ApiResponses(value = {  
+			@ApiResponse(code = 400, message = "Não é possível excluir um cliente"),  
+			@ApiResponse(code = 404, message = "Código inexistente") 
+			})
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value="/{id}",method=RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
@@ -85,6 +98,7 @@ public class ClienteResources {
 		
 	}
 	
+	@ApiOperation(value="Retorna clientes") 
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<ClienteDTO>> findAll() {
@@ -97,6 +111,7 @@ public class ClienteResources {
 		
 	}
 	
+	@ApiOperation(value="Retorna cliente por paginação") 
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value="/page", method=RequestMethod.GET)
 	public ResponseEntity<Page<ClienteDTO>> findPage(
@@ -112,6 +127,7 @@ public class ClienteResources {
 		
 	}
 	
+	@ApiOperation(value="Insere a foto") 
 	@RequestMapping(value="/picture", method=RequestMethod.POST)
 	public ResponseEntity<Void> uploadProfilePicture(@RequestParam(name="file") MultipartFile file){
 		

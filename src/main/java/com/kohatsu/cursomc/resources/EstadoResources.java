@@ -18,6 +18,8 @@ import com.kohatsu.cursomc.repositories.CidadeRepository;
 import com.kohatsu.cursomc.servicies.CidadeService;
 import com.kohatsu.cursomc.servicies.EstadoService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value="/estados")
 public class EstadoResources {
@@ -27,7 +29,7 @@ public class EstadoResources {
 	@Autowired
 	private CidadeService cidadeService;
 	
-	
+	@ApiOperation(value="Retorna Estados")
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<EstadoDTO>> findAll(){
 		
@@ -38,6 +40,7 @@ public class EstadoResources {
 		
 	}
 	
+	@ApiOperation(value="Retorna Cidades por Estado")
 	@RequestMapping(value="/{id}/cidades", method=RequestMethod.GET)
 	public ResponseEntity<List<CidadeDTO>> findCidades(@PathVariable("id") Integer id){
 		

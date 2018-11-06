@@ -22,6 +22,10 @@ import com.kohatsu.cursomc.domain.Categoria;
 import com.kohatsu.cursomc.dto.CategoriaDTO;
 import com.kohatsu.cursomc.servicies.CategoriaService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.ApiResponse;
+
 @RestController
 @RequestMapping(value="/categorias")
 public class CategoriaResources {
@@ -29,6 +33,7 @@ public class CategoriaResources {
 	@Autowired
 	private CategoriaService service;
 	
+	@ApiOperation(value="Retorna categoria por id") 
 	@RequestMapping(value="/{id}",method=RequestMethod.GET)
 	public ResponseEntity<Categoria> find(@PathVariable Integer id) {
 		
@@ -39,6 +44,7 @@ public class CategoriaResources {
 	}
 	
 	@PreAuthorize("hasAnyRole('ADMIN')")
+	@ApiOperation(value="Insere categoria") 
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody CategoriaDTO objDto){
 		
@@ -53,6 +59,7 @@ public class CategoriaResources {
 	}
 	
 	@PreAuthorize("hasAnyRole('ADMIN')")
+	@ApiOperation(value="Atualiza categoria") 
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody CategoriaDTO objDto, @PathVariable Integer id){
 		
@@ -67,6 +74,11 @@ public class CategoriaResources {
 	}
 	
 	@PreAuthorize("hasAnyRole('ADMIN')")
+	@ApiOperation(value="Remove categoria")
+	@ApiResponses(value = {  
+			@ApiResponse(code = 400, message = "Não é possível excluir uma categoria que possui produtos"),  
+			@ApiResponse(code = 404, message = "Código inexistente") 
+			})
 	@RequestMapping(value="/{id}",method=RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		
@@ -76,6 +88,7 @@ public class CategoriaResources {
 		
 	}
 	
+	@ApiOperation(value="Retorna todas as categorias") 
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<CategoriaDTO>> findAll() {
 		
@@ -87,6 +100,7 @@ public class CategoriaResources {
 		
 	}
 	
+	@ApiOperation(value="Retorna categorias por paginação") 
 	@RequestMapping(value="/page", method=RequestMethod.GET)
 	public ResponseEntity<Page<CategoriaDTO>> findPage(
 			@RequestParam(name="page", defaultValue="0") Integer page, 

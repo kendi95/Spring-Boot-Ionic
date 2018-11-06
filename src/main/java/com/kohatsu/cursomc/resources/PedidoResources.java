@@ -18,6 +18,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.kohatsu.cursomc.domain.Pedido;
 import com.kohatsu.cursomc.servicies.PedidoService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value="/pedidos")
 public class PedidoResources {
@@ -25,6 +27,7 @@ public class PedidoResources {
 	@Autowired
 	private PedidoService service;
 	
+	@ApiOperation(value="Retorna pedido por id")
 	@RequestMapping(value="/{id}",method=RequestMethod.GET)
 	public ResponseEntity<Pedido> find(@PathVariable Integer id) {
 		
@@ -34,6 +37,7 @@ public class PedidoResources {
 		
 	}
 	
+	@ApiOperation(value="Insere pedido")
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody Pedido obj){
 		
@@ -45,6 +49,7 @@ public class PedidoResources {
 		
 	}
 	
+	@ApiOperation(value="Retorna pedido por paginação")
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<Page<Pedido>> findPage(
 			@RequestParam(name="page", defaultValue="0") Integer page, 

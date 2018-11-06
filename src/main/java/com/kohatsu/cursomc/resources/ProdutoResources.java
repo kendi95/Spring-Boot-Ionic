@@ -17,6 +17,8 @@ import com.kohatsu.cursomc.dto.ProdutoDTO;
 import com.kohatsu.cursomc.resources.utils.URL;
 import com.kohatsu.cursomc.servicies.ProdutoService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value="/produtos")
 public class ProdutoResources {
@@ -24,6 +26,7 @@ public class ProdutoResources {
 	@Autowired
 	private ProdutoService service;
 	
+	@ApiOperation(value="Retorna produto por id")
 	@RequestMapping(value="/{id}",method=RequestMethod.GET)
 	public ResponseEntity<Produto> find(@PathVariable Integer id) {
 		
@@ -33,6 +36,7 @@ public class ProdutoResources {
 		
 	}
 	
+	@ApiOperation(value="Retorna produto por paginação")
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<Page<ProdutoDTO>> findPage(
 			@RequestParam(name="nome", defaultValue="") String nome,
